@@ -1,10 +1,7 @@
 @mixin clearfix($extend: true) {
     @if $extend==true {
         @extend %clearfix;
-    }
-
-    @else if $extend==false {
-
+    } @else if $extend==false {
         &::before,
         &::after {
             content: "\0020";
@@ -19,28 +16,49 @@
     }
 }
 
-@mixin font($font-family, $path, $formats: (ttf eot otf woff2 woff svg), $webfonts: true) {
+@mixin font(
+    $font-family,
+    $path,
+    $formats: (ttf eot otf woff2 woff svg),
+    $webfonts: true
+) {
     $src: null;
     $webfont: null;
 
-    $extmods: (eot: "?", svg: "#"+ str-replace($font-family, " ", "_"));
+    $extmods: (
+        eot: "?",
+        svg: "#" + str-replace($font-family, " ", "_"),
+    );
 
-    $formatmods: (otf: "opentype", ttf: "truetype");
+    $formatmods: (
+        otf: "opentype",
+        ttf: "truetype",
+    );
 
     @each $ext in $formats {
-        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-        $formatmod: if(map-has-key($formatmods, $ext), map-get($formatmods, $ext), $ext);
+        $extmod: if(
+            map-has-key($extmods, $ext),
+            $ext + map-get($extmods, $ext),
+            $ext
+        );
+        $formatmod: if(
+            map-has-key($formatmods, $ext),
+            map-get($formatmods, $ext),
+            $ext
+        );
 
-        @if ($ext !="otf"and $ext !="ttf"and $webfonts==true) {
+        @if ($ext != "otf" and $ext != "ttf" and $webfonts==true) {
             $webfont: "webfont/";
+        } @else {
+            $webfont: "/";
         }
 
-        @else {
-            $webfont: null;
-        }
-
-        $src: append($src, url(quote($path + $webfont + $font-family + "." + $extmod)) format(quote($formatmod)),
-        comma);
+        $src: append(
+            $src,
+            url(quote($path + $webfont + $font-family + "." + $extmod))
+                format(quote($formatmod)),
+            comma
+        );
     }
 
     @font-face {
@@ -78,7 +96,7 @@
     opacity: $value;
 }
 
-@mixin centering ($fromX: 50%, $fromY: 50%, $x: -50%, $y: -50%) {
+@mixin centering($fromX: 50%, $fromY: 50%, $x: -50%, $y: -50%) {
     top: $fromY;
     #{$left}: if-ltr(#{$fromX}, auto);
     #{$right}: if-ltr(auto, #{$fromX});
@@ -90,21 +108,15 @@
         @media (min-width: $screen-md-max) {
             @content;
         }
-    }
-
-    @else if $point==md {
+    } @else if $point==md {
         @media (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
             @content;
         }
-    }
-
-    @else if $point==sm {
+    } @else if $point==sm {
         @media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
             @content;
         }
-    }
-
-    @else if $point==xs {
+    } @else if $point==xs {
         @media (max-width: $screen-xs-max) {
             @content;
         }
@@ -112,22 +124,20 @@
 }
 
 @mixin breakpoint-between($lower, $upper) {
-    @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
-
+    @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper)
+    {
         $lower-breakpoint: map-get($breakpoints, $lower);
         $upper-breakpoint: map-get($breakpoints, $upper);
 
         @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint)) {
             @content;
         }
-    }
-
-    @else {
-        @if (map-has-key($breakpoints, $lower)==false) {
+    } @else {
+        @if (map-has-key($breakpoints, $lower) ==false) {
             @warn 'Your lower breakpoint was invalid: #{$lower}.';
         }
 
-        @if (map-has-key($breakpoints, $upper)==false) {
+        @if (map-has-key($breakpoints, $upper) ==false) {
             @warn 'Your upper breakpoint was invalid: #{$upper}.';
         }
     }
@@ -141,21 +151,15 @@
         border-top: $size solid transparent;
         border-bottom: $size solid transparent;
         border-#{$right}: $size solid $color;
-    }
-
-    @else if ($direction==$right) {
+    } @else if ($direction==$right) {
         border-top: $size solid transparent;
         border-bottom: $size solid transparent;
         border-#{$left}: $size solid $color;
-    }
-
-    @else if ($direction==down) {
+    } @else if ($direction==down) {
         border-#{$left}: $size solid transparent;
         border-#{$right}: $size solid transparent;
         border-top: $size solid $color;
-    }
-
-    @else if ($direction==up) {
+    } @else if ($direction==up) {
         border-#{$left}: $size solid transparent;
         border-#{$right}: $size solid transparent;
         border-bottom: $size solid $color;
@@ -168,18 +172,29 @@
     white-space: nowrap;
 }
 
-@mixin box-shadow($x: rem(0), $y: rem(0), $blur: rem(0), $spread: rem(0), $color: rgba(0, 0, 0, 0.5), $inset: false) {
-
+@mixin box-shadow(
+    $x: rem(0),
+    $y: rem(0),
+    $blur: rem(0),
+    $spread: rem(0),
+    $color: rgba(0, 0, 0, 0.5),
+    $inset: false
+) {
     // MAIN BOX SHADOW VARS, CHANGE THEM WHEN INCLUDE IF NECESSARY
 
     @if $inset==true {
-        @include prefixer(box-shadow, inset $x $y $blur $spread $color, webkit moz ms);
+        @include prefixer(
+            box-shadow,
+            inset $x $y $blur $spread $color,
+            webkit moz ms
+        );
+    } @else {
+        @include prefixer(
+            box-shadow,
+            $x $y $blur $spread $color,
+            webkit moz ms
+        );
     }
-
-    @else {
-        @include prefixer(box-shadow, $x $y $blur $spread $color, webkit moz ms);
-    }
-
 }
 
 @function strip-unit($value) {
@@ -194,7 +209,11 @@
 
     @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
         & {
-            font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            font-size: calc(
+                #{$min-font-size} +
+                    #{strip-unit($max-font-size - $min-font-size)} *
+                    ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+            );
         }
     }
 }
