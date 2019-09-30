@@ -2,8 +2,8 @@
 
 // LOAD FONTS
 
-/* // FONTNAME
-@include font("font-name", "path/to/folder", ttf eot woff2 woff svg); */
+// FONTNAME
+@include font("Roboto-Regular", "../fonts/Roboto", ttf, false);
 
 *::selection {
     background: $selection-background-color;
