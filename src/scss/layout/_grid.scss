@@ -9,6 +9,7 @@
     display: block;
     max-width: $container-max-width;
     margin: 0 auto;
+    padding: 0 1rem;
 
     &.semi-full {
         max-width: $container-semi-full-max-width;
