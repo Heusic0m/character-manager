@@ -46,6 +46,12 @@ button {
     -webkit-touch-callout: none;
 }
 
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 ul,
 ol,
 li {
