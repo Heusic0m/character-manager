@@ -60,6 +60,10 @@ typings/
 # next.js build output
 .next
 
-
 # CSS FOLDER
-css
+.src/css
+
+
+# PARCEL
+dist
+.cache
