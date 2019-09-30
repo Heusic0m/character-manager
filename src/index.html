@@ -4,12 +4,65 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>TITLE</title>
+        <link rel="stylesheet" type="text/css" href="./scss/screen.scss" />
+        <title>Character Manager</title>
     </head>
 
     <body>
         <div class="container-fluid">
-            content
+            <div class="header-container">
+                <header class="header">
+                    <div class="container">
+                        <div class="row">
+                            <h3 class="header-title">
+                                Character Manager
+                            </h3>
+                            <div class="add-character-button-container">
+                                <button type="button">
+                                    Add a character
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="content-container">
+                <div class="characters-container">
+                    <div class="row">
+                        <div class="col-18 col-md-9 col-lg-6 character">
+                            <div class="character-image">
+                                <img src="./images/dummy-character.jpg" />
+                            </div>
+
+                            <div class="character-name">
+                                <p>Name</p>
+                            </div>
+
+                            <div class="character-short-description">
+                                <p>Short description</p>
+                            </div>
+
+                            <div class="actions-buttons-container">
+                                <div class="add-character-button-container">
+                                    <button type="button">
+                                        View
+                                    </button>
+                                </div>
+                                <div class="add-character-button-container">
+                                    <button type="button">
+                                        Edit
+                                    </button>
+                                </div>
+                                <div class="add-character-button-container">
+                                    <button type="button">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="./ts/main.ts"></script>
     </body>
