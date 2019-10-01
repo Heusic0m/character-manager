@@ -1,12 +1,23 @@
 /*  LARGE SCREENS AND ABOVE  */
-@media screen and (min-width: $screen-sm-max) {}
+@media screen and (min-width: $screen-sm-max) {
+    .characters-container {
+        .character {
+            .actions-buttons-container {
+                .action-button {
+                    @include columns-generator(3, 3%);
+                    &:not(:last-child) {
+                        margin-bottom: 0.75rem;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /*  TABLETS AND ABOVE  */
 @media screen and (min-width: $screen-xs-max) {
-
     .create-form,
     .edit-form {
-
         .character,
         .form-fields-container {
             float: left;
@@ -15,14 +26,15 @@
 }
 
 /* BOTH PHONES AND TABLETS */
-@media screen and (max-width: $screen-sm-max) {}
+@media screen and (max-width: $screen-sm-max) {
+}
 
 /*  TABLETS ONLY  */
-@media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {}
+@media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+}
 
 /* PHONES ONLY */
 @media screen and (max-width: $screen-xs-max) {
-
     p.title {
         text-align: center;
     }
@@ -43,11 +55,11 @@
                 width: 100%;
             }
         }
-input.delete {
-    width: 100%;
+        input.delete {
+            width: 100%;
             margin-left: 0;
             margin-right: 0;
-}
+        }
         input.submit {
             width: 100%;
             margin-left: 0;
@@ -55,7 +67,6 @@ input.delete {
         }
     }
 
-  
     input.create,
     textarea.create {
         width: calc(100% - 16px);
@@ -63,12 +74,9 @@ input.delete {
 
     .cool-container {
         width: calc(100% - 16px);
-
     }
 
     input.submit {
         width: calc(100% - 16px);
-
     }
-
 }
