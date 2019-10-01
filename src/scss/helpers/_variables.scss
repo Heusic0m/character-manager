@@ -13,17 +13,19 @@ $breakpoints: (
 );
 
 // COLORS
-$main-background-color: #f5f5f5;
-$main-font-color: #000000;
-$main-theme-color: #0c2461;
-$selection-background-color: #0652dd;
-$selection-color: #ffffff;
 $white: #ffffff;
 $black: #000000;
+$main-background-color: #f5f5f5;
+$main-font-color: rgba($black, 0.87);
+$main-theme-color: #0c2461;
+$selection-background-color: hsl(219, 95%, 45%);
+$selection-color: #ffffff;
 
 // BUTTONS
 $main-buttons-radius: 1rem;
-$add-button-background-color: #38ada9;
+$view-button-background-color: #2bbbad;
+$add-button-background-color: #2bbbad;
+$delete-button-background-color: #ff3547;
 
 // FONTS
 $mainFont: "Roboto-Regular";
