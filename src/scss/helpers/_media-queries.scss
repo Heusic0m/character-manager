@@ -2,9 +2,13 @@
 @media screen and (min-width: $screen-sm-max) {
     .characters-container {
         .character {
+
+            @include columns-generator(3, 3%);
+
             .actions-buttons-container {
                 .action-button {
                     @include columns-generator(3, 3%);
+
                     &:not(:last-child) {
                         margin-bottom: 0.75rem;
                     }
@@ -16,8 +20,66 @@
 
 /*  TABLETS AND ABOVE  */
 @media screen and (min-width: $screen-xs-max) {
+
+    .header-container {
+        .header {
+            .header-action-button-container {
+                margin-top: -2px;
+
+                .header-action-button {
+
+                    span {
+                        &::before {
+                            position: relative;
+                            content: "Add a character";
+                        }
+                    }
+
+                    &[href*="/create.html"] {
+                        span {
+                            &::before {
+                                position: relative;
+                                content: "Add a character";
+                            }
+                        }
+                    }
+
+                    &[href*="/index.html"] {
+                        span {
+                            &::before {
+                                position: relative;
+                                content: "Home";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .single-character-container {
+        .sticky-character-image {
+            @supports (position: sticky) {
+                position: sticky;
+                top: rem(63);
+            }
+        }
+
+        .character-infos {
+            margin-left: 4rem;
+            margin-top: 4rem;
+        }
+
+        .actions-buttons-container {
+            .action-button {
+                @include columns-generator(2, 3%);
+            }
+        }
+    }
+
     .create-form,
     .edit-form {
+
         .character,
         .form-fields-container {
             float: left;
@@ -26,15 +88,83 @@
 }
 
 /* BOTH PHONES AND TABLETS */
-@media screen and (max-width: $screen-sm-max) {
-}
+@media screen and (max-width: $screen-sm-max) {}
 
 /*  TABLETS ONLY  */
 @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+    .characters-container {
+        .character {
+            @include columns-generator(2, 3%);
+        }
+    }
 }
 
 /* PHONES ONLY */
 @media screen and (max-width: $screen-xs-max) {
+    .header-container {
+        .header {
+            .header-action-button-container {
+                position: fixed;
+                bottom: 2rem;
+                right: rem(16);
+                z-index: 10;
+
+                .header-action-button {
+                    border-radius: 50%;
+                    font-size: 2rem;
+                    height: 4rem;
+                    width: 4rem;
+                    -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+                    -moz-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+                    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+
+                    span {
+                        position: absolute;
+                        @include centering();
+
+                        &::before {
+                            position: relative;
+                            content: "+";
+                        }
+                    }
+
+                    &[href*="/create.html"] {
+                        span {
+                            &::before {
+                                position: relative;
+                                content: "+";
+                            }
+                        }
+                    }
+
+                    &[href*="/index.html"] {
+                        span {
+                            content: "";
+                            height: 26px;
+                            width: 26px;
+                            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxnPiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+IDwvZz4gPGc+ICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+ICA8cGF0aCBmaWxsPSIjZmZmZmZmIiBpZD0ic3ZnXzEiIGQ9Im0xNS40NSw3bC0xLjQ1LC0xLjQ0OWwwLC0zLjU1MWMwLC0wLjU1IC0wLjQ1LC0xIC0xLC0xbC0xLDBjLTAuNTUsMCAtMSwwLjQ1IC0xLDFsMCwwLjU1M2wtMiwtMS45OThjLTAuMjczLC0wLjI1OCAtMC41MjMsLTAuNTU1IC0xLC0wLjU1NXMtMC43MjcsMC4yOTcgLTEsMC41NTVsLTYuNDUsNi40NDVjLTAuMzEyLDAuMzI1IC0wLjU1LDAuNTYyIC0wLjU1LDFjMCwwLjU2MyAwLjQzMiwxIDEsMWwxLDBsMCw2YzAsMC41NSAwLjQ1LDEgMSwxbDMsMGwwLC01YzAsLTAuNTUgMC40NSwtMSAxLC0xbDIsMGMwLjU1LDAgMSwwLjQ1IDEsMWwwLDVsMywwYzAuNTUsMCAxLC0wLjQ1IDEsLTFsMCwtNmwxLDBjMC41NjgsMCAxLC0wLjQzNyAxLC0xYzAsLTAuNDM4IC0wLjIzOCwtMC42NzUgLTAuNTUsLTF6Ii8+IDwvZz48L3N2Zz4=);
+                            background-size: contain;
+                            background-repeat: no-repeat;
+
+                            &::before {
+                                content: initial;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .characters-container,
+    .single-character-container {
+        .character {
+            max-width: 420px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+    }
+
     p.title {
         text-align: center;
     }
@@ -55,11 +185,13 @@
                 width: 100%;
             }
         }
+
         input.delete {
             width: 100%;
             margin-left: 0;
             margin-right: 0;
         }
+
         input.submit {
             width: 100%;
             margin-left: 0;

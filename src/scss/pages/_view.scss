@@ -1,4 +1,4 @@
-.characters-container {
+.single-character-container {
     position: relative;
     padding-top: 2rem;
 
@@ -30,6 +30,7 @@
         }
 
         .character-image {
+            border-right: 1px solid rgba($black, 0.15);
             border-bottom: 1px solid rgba($black, 0.15);
             height: 16.5rem;
             overflow: hidden;
@@ -63,7 +64,7 @@
         }
 
         .actions-buttons-container {
-            padding-top: 0.5rem;
+            padding-top: 1rem;
 
             button,
             a {
@@ -114,8 +115,4 @@
             }
         }
     }
-}
-
-p.title {
-    padding-top: 2rem;
 }

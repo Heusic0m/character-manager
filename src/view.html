@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" type="text/css" href="./scss/screen.scss" />
+        <title>View character</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="header-container">
+                <header class="header">
+                    <div class="container">
+                        <div class="row">
+                            <h3 class="header-title">
+                                <a href="./index.html">Character Manager</a>
+                            </h3>
+                            <div class="header-action-button-container">
+                                <a
+                                    href="./index.html"
+                                    class="header-action-button no-select"
+                                >
+                                    <span></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="content-container">
+                <div class="container">
+                    <div class="single-character-container">
+                        <div class="character break-long-words row">
+                            <div class="sticky-character-image col-6 col-xs-18">
+                                <div class="character-image">
+                                    <img src="./images/dummy-character.png" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-xs-18">
+                                <div class="character-infos">
+                                    <div class="character-name">
+                                        <p>Name</p>
+                                    </div>
+                                    <div
+                                        class="description character-short-description"
+                                    >
+                                        <p>Short description</p>
+                                    </div>
+                                    <div
+                                        class="description character-full-description"
+                                    >
+                                        <p>
+                                            Lorem ipsum dolor sit amet
+                                            consectetur, adipisicing elit. Est
+                                            excepturi architecto, commodi,
+                                            dolore molestias recusandae.
+                                            Pariatur voluptatum, eos officiis
+                                            tenetur est incidunt porro. Enim
+                                            ipsam harum odio consectetur est
+                                            excepturi architecto, commodi,
+                                            dolore molestias recusandae
+                                            accusamus inventore?
+                                        </p>
+                                    </div>
+                                    <div class="actions-buttons-container">
+                                        <div
+                                            class="edit action-button no-select"
+                                        >
+                                            <a href="./edit.html">Edit</a>
+                                        </div>
+                                        <div
+                                            class="delete action-button no-select"
+                                        >
+                                            <button type="button">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./ts/main.ts"></script>
+    </body>
+</html>

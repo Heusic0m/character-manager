@@ -16,22 +16,37 @@
 
         .header-title {
             color: $white;
-            padding-top: rem(2);
             font-size: 1.5rem;
+
+            @media screen and (max-width: 300px) {
+                font-size: 1.325rem;
+            }
+
             text-shadow: 1px 1px #2c3e50;
             float: $left;
+
+            a {
+                color: $white;
+                transition: color 0.35s ease-in-out;
+
+                &:hover {
+                    color: darken($white, 10);
+                    text-decoration: underline;
+                }
+            }
         }
 
-        .add-character-button-container {
+        .header-action-button-container {
             float: $right;
 
-            .add-character-button {
+            .header-action-button {
+                position: relative;
                 color: $white;
                 background-color: $add-button-background-color;
                 font-size: 1rem;
                 text-align: center;
                 text-shadow: 1px 1px #2c3e50;
-                padding: 0.35rem 0.75rem;
+                padding: 0.5rem 1rem;
                 border-radius: $main-buttons-radius;
                 cursor: pointer;
                 transition-property: color, background-color;

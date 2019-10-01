@@ -10,10 +10,8 @@ if (charactersContainer) {
         res.data.forEach((hero: any) => {
             const characterCode = `
   <div class="character-image">
-    <img src="${
-        hero.image
-            ? "data:image/png;base64," + hero.image
-            : "data:image/png;base64," + dummyCharacterImage
+    <img src="data:image/png;base64,${
+        hero.image ? hero.image : dummyCharacterImage
     }" />
   </div>
   <div class="character-infos">
@@ -25,18 +23,18 @@ if (charactersContainer) {
       <p>${
           hero.shortDescription
               ? hero.shortDescription
-              : "No description provided"
+              : "No short description provided"
       }</p>
     </div>
 
     <div class="actions-buttons-container">
-      <div class="view action-button add-character-button-container no-select">
-        <a href="javascript:;">View</a>
+      <div class="view action-button no-select">
+        <a href="./view.html">View</a>
       </div>
-      <div class="edit action-button add-character-button-container no-select">
+      <div class="edit action-button no-select">
         <a href="./edit.html">Edit</a>
       </div>
-      <div class="delete action-button add-character-button-container no-select">
+      <div class="delete action-button no-select">
         <button type="button">Delete</button>
       </div>
     </div>
@@ -68,18 +66,47 @@ if (charactersContainer) {
     });
 }
 
-function readFile(el) {
-    if (el.files && el.files[0]) {
-        var FR = new FileReader();
+File.prototype.convertToBase64 = function(callback) {
+    var reader = new FileReader();
+    reader.onloadend = function(e) {
+        callback(e.target.result, e.target.error);
+    };
+    reader.readAsDataURL(this);
+};
 
-        FR.addEventListener("load", function(e) {
-            console.log(e.target.result);
+let createForm = document.querySelector(".create-form");
+let createFormData = <any>{};
+let characterImageCreateInput = document.querySelector("#character-image");
+
+let createImageToBase64: void;
+
+if (createForm) {
+    if (characterImageCreateInput) {
+        characterImageCreateInput.addEventListener("change", el => {
+            createImageToBase64 = convertToBase64(el.currentTarget);
+            document.querySelector(".create-form .character-image img").src =
+                "data:image/png;base64," + convertToBase64(el.currentTarget);
         });
-
-        FR.readAsDataURL(el.files[0]);
     }
-}
 
-document.querySelector("#submitForm").addEventListener("change", el => {
-    readFile(el.currentTarget);
-});
+    createForm.addEventListener("submit", () => {
+        createFormData.name =
+            document.querySelector(".create-form #name").value.length > 0
+                ? document.querySelector(".create-form #name").value
+                : "No name";
+        createFormData.shortDescription =
+            document.querySelector(".create-form #short-description").value
+                .length > 0
+                ? document.querySelector(".create-form #short-description")
+                      .value
+                : "No short description provided";
+        createFormData.description =
+            document.querySelector(".create-form #full-description").value
+                .length > 0
+                ? document.querySelector(".create-form #full-description").value
+                : "No full description provided";
+        createFormData.image = createImageToBase64;
+
+        console.log(createFormData);
+    });
+}

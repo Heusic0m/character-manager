@@ -1,55 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" type="text/css" href="./scss/screen.scss" />
+        <title>Edit character</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="./scss/screen.scss" />
-    <title>TITLE</title>
-</head>
-
-<body>
-    <div class="container-fluid">
-        <div class="container">
-            <p class="title">Edit character</p>
-            <form method="post" class="create-form row">
-                <div class="character">
-                    <div class="character-image">
-                        <img src="./images/dummy-character.png" />
-                    </div>
-
-                    <label for="submitForm" class="cool-container">Change Avatar <input id="submitForm" class="cool"
-                            type="file" name="Myimage" />
-                    </label>
-                </div>
-
-
-                <div class="form-fields-container">
-                    <div class="form-field-container">
-                        <input class="form-field create" type="text" name="pseudo" placeholder="Name" />
-                    </div>
-                    <div class="form-field-container">
-                        <input class="form-field create" type="text" name="pseudo" placeholder="Short description" />
-                    </div>
-                    <div class="form-field-container">
-                        <textarea class="form-field create" name="Full desc" id="" cols="30" rows="10"
-                            placeholder="Full description"></textarea>
-                    </div>
-
-                    <div>
-                    <input class="delete" type="submit" value="delete" />
-                    <input class="submit" type="submit" value="Submit" />
+    <body>
+        <div class="container-fluid">
+            <div class="header-container">
+                <header class="header">
+                    <div class="container">
+                        <div class="row">
+                            <h3 class="header-title">
+                                <a href="./index.html">Character Manager</a>
+                            </h3>
+                            <div class="header-action-button-container">
+                                <a
+                                    href="./index.html"
+                                    class="header-action-button no-select"
+                                >
+                                    <span></span>
+                                </a>
+                            </div>
                         </div>
-                </div>
-            </form>
-       
+                    </div>
+                </header>
+            </div>
+            <div class="container">
+                <p class="title">Edit character</p>
+                <form method="post" class="create-form row">
+                    <div class="character">
+                        <div class="character-image">
+                            <img src="./images/dummy-character.png" />
+                        </div>
 
+                        <label for="submitForm" class="cool-container"
+                            >Change Avatar
+                            <input
+                                id="submitForm"
+                                class="cool"
+                                type="file"
+                                name="Myimage"
+                            />
+                        </label>
+                    </div>
 
+                    <div class="form-fields-container">
+                        <div class="form-field-container">
+                            <input
+                                class="form-field create"
+                                type="text"
+                                name="pseudo"
+                                placeholder="Name"
+                            />
+                        </div>
+                        <div class="form-field-container">
+                            <input
+                                class="form-field create"
+                                type="text"
+                                name="pseudo"
+                                placeholder="Short description"
+                            />
+                        </div>
+                        <div class="form-field-container">
+                            <textarea
+                                class="form-field create"
+                                name="Full desc"
+                                id=""
+                                cols="30"
+                                rows="10"
+                                placeholder="Full description"
+                            ></textarea>
+                        </div>
+
+                        <div>
+                            <input
+                                class="delete"
+                                type="submit"
+                                value="delete"
+                            />
+                            <input
+                                class="submit"
+                                type="submit"
+                                value="Submit"
+                            />
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <script src="./ts/main.ts"></script>
-</body>
-
+        <script src="./ts/main.ts"></script>
+    </body>
 </html>
