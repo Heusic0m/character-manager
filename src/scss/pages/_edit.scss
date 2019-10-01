@@ -65,25 +65,26 @@
     }
 
     input.delete {
-          height: auto;
+        height: auto;
         width: 100%;
         background-color: white;
         display: inline-block;
         border-radius: 5px;
-        background-color:red;
+        background-color: red;
         display: inline-block;
         border-radius: 5px;
         outline: 0;
         border: 0;
-        border: 3px solid red;
+        border: 3px solid #ff3547;
         margin: 8px;
         padding: 8px;
         border-radius: 1rem;
         color: white;
     }
-        .delete:hover {
+
+    .delete:hover {
         cursor: pointer;
-        border: solid 3px red;
+        border: solid 3px #ff3547;
         font-weight: bold;
     }
 
@@ -166,5 +167,3 @@
 
     }
 }
-
- 
