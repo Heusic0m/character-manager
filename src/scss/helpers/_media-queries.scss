@@ -2,7 +2,17 @@
 @media screen and (min-width: $screen-sm-max) {}
 
 /*  TABLETS AND ABOVE  */
-@media screen and (min-width: $screen-xs-max) {}
+@media screen and (min-width: $screen-xs-max) {
+
+    .create-form,
+    .edit-form {
+
+        .character,
+        .form-fields-container {
+            float: left;
+        }
+    }
+}
 
 /* BOTH PHONES AND TABLETS */
 @media screen and (max-width: $screen-sm-max) {}
@@ -11,4 +21,54 @@
 @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {}
 
 /* PHONES ONLY */
-@media screen and (max-width: $screen-xs-max) {}
+@media screen and (max-width: $screen-xs-max) {
+
+    p.title {
+        text-align: center;
+    }
+
+    .create-form,
+    .edit-form {
+        text-align: center;
+
+        .character {
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .form-fields-container {
+            margin: 0;
+
+            .form-field {
+                width: 100%;
+            }
+        }
+input.delete {
+    width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+}
+        input.submit {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+  
+    input.create,
+    textarea.create {
+        width: calc(100% - 16px);
+    }
+
+    .cool-container {
+        width: calc(100% - 16px);
+
+    }
+
+    input.submit {
+        width: calc(100% - 16px);
+
+    }
+
+}

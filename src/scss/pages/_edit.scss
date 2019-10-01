@@ -4,6 +4,7 @@
     margin-bottom: 30px;
 }
 
+
 .create-form,
 .edit-form {
     .character {
@@ -63,9 +64,33 @@
         background-color: white;
     }
 
+    input.delete {
+          height: auto;
+        width: 100%;
+        background-color: white;
+        display: inline-block;
+        border-radius: 5px;
+        background-color:red;
+        display: inline-block;
+        border-radius: 5px;
+        outline: 0;
+        border: 0;
+        border: 3px solid red;
+        margin: 8px;
+        padding: 8px;
+        border-radius: 1rem;
+        color: white;
+    }
+        .delete:hover {
+        cursor: pointer;
+        border: solid 3px red;
+        font-weight: bold;
+    }
+
+
     input.submit {
         height: auto;
-        width: 95%;
+        width: 100%;
         background-color: white;
         display: inline-block;
         border-radius: 5px;
@@ -141,3 +166,5 @@
 
     }
 }
+
+ 
