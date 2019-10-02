@@ -4,7 +4,6 @@
     margin-bottom: 30px;
 }
 
-
 .create-form,
 .edit-form {
     .character {
@@ -12,10 +11,15 @@
         background-color: $white;
         border-radius: 4px;
         padding-bottom: 1px;
-        -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-        -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-
+        -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+        -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 
         .character-image {
             border-bottom: 1px solid rgba($black, 0.15);
@@ -56,7 +60,6 @@
 
     input.create::placeholder {
         font-style: italic;
-
     }
 
     input.create:hover {
@@ -65,13 +68,12 @@
     }
 
     input.delete {
+        text-align: center;
         height: auto;
         width: 100%;
-        background-color: white;
         display: inline-block;
         border-radius: 5px;
         background-color: red;
-        display: inline-block;
         border-radius: 5px;
         outline: 0;
         border: 0;
@@ -87,7 +89,6 @@
         border: solid 3px #ff3547;
         font-weight: bold;
     }
-
 
     input.submit {
         height: auto;
@@ -105,14 +106,12 @@
         padding: 8px;
         border-radius: 1rem;
         color: white;
-
     }
 
     .submit:hover {
         cursor: pointer;
         border: solid 3px rgb(47, 255, 64);
         font-weight: bold;
-
     }
 
     textarea.create {
@@ -155,7 +154,6 @@
         padding: 8px;
         color: white;
 
-
         input.cool {
             display: none;
         }
@@ -164,6 +162,5 @@
     .cool-container:hover {
         border: 3px solid #38ada9;
         font-weight: bold;
-
     }
 }
