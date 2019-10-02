@@ -21,6 +21,18 @@ const dummyCharacterImage =
 
 if (charactersContainer) {
     axios("https://character-database.becode.xyz/characters").then(res => {
+        if (res.data.length <= 0) {
+            for (let i = 0; i < 10; i++) {
+                axios.post("https://character-database.becode.xyz/characters", {
+                    name: `Super hero ${i + 1}`,
+                    shortDescription: "This is a dummy description",
+                    description:
+                        "The full description of this element can be changed later, this is a dummy description",
+                    image: dummyCharacterImage,
+                });
+            }
+        }
+
         res.data.forEach((hero: any) => {
             const characterCode = `
   <div class="character-image">
@@ -59,23 +71,6 @@ if (charactersContainer) {
             character.setAttribute("data-id", hero.id);
             character.innerHTML = characterCode;
             charactersContainer.appendChild(character);
-
-            setInterval(() => {
-                if (res.data.length <= 0) {
-                    for (let i = 0; i < 10; i++) {
-                        axios.post(
-                            "https://character-database.becode.xyz/characters",
-                            {
-                                name: `Super hero ${i + 1}`,
-                                shortDescription: "This is a dummy description",
-                                description:
-                                    "The full description of this element can be changed later, this is a dummy description",
-                                image: dummyCharacterImage,
-                            },
-                        );
-                    }
-                }
-            }, 2000);
         });
     });
 }
@@ -113,14 +108,6 @@ document.addEventListener("click", function(e) {
         }
     }
 });
-
-File.prototype.convertToBase64 = function(callback) {
-    var reader = new FileReader();
-    reader.onloadend = function(e) {
-        callback(e.target.result, e.target.error);
-    };
-    reader.readAsDataURL(this);
-};
 
 let createForm = document.querySelector(".create-form");
 let createFormData = <any>{};
