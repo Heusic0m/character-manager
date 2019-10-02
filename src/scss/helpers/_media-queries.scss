@@ -1,7 +1,9 @@
 /*  LARGE SCREENS AND ABOVE  */
 @media screen and (min-width: $screen-sm-max) {
 
-    .masonry-row {padding-bottom: 2rem;
+    .masonry-row {
+        padding-bottom: 2rem;
+
         .character {
             @include columns-generator(3, 3%);
         }
@@ -117,7 +119,13 @@
 }
 
 /* BOTH PHONES AND TABLETS */
-@media screen and (max-width: $screen-sm-max) {}
+@media screen and (max-width: $screen-sm-max) {
+    .masonry-row {
+        .character {
+            padding-bottom: 0.75rem;
+        }
+    }
+}
 
 /*  TABLETS ONLY  */
 @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
