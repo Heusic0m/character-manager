@@ -2,12 +2,11 @@ import axios from "axios";
 import SimpleMDE from "simplemde";
 import showdown from "showdown";
 import dummyCharacter from "../images/dummy-character.png";
-
 const markDownConverter = new showdown.Converter();
-// converter.makeHtml(text);
 
+let markdownTextarea: {value: any};
 if (document.querySelector(".markdown-textarea")) {
-    let markdownTextarea = new SimpleMDE({
+    markdownTextarea = new SimpleMDE({
         element: document.querySelector(".markdown-textarea"),
     });
 }
@@ -206,6 +205,7 @@ if (editForm) {
         nameInputField.value = hero.name;
         shortDescInputField.value = hero.shortDescription;
         fullDescInputField.value = hero.description;
+        markdownTextarea.value(hero.description);
         currentHeroImage = hero.image;
     });
 
@@ -223,7 +223,7 @@ if (editForm) {
     editForm.addEventListener("submit", () => {
         editObjData.name = nameInputField.value;
         editObjData.shortDescription = shortDescInputField.value;
-        editObjData.description = fullDescInputField.value;
+        editObjData.description = markdownTextarea.value();
         if (!editObjData.image) {
             editObjData.image = currentHeroImage;
         }
