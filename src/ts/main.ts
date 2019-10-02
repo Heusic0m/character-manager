@@ -1,5 +1,16 @@
 import axios from "axios";
+import SimpleMDE from "simplemde";
+import showdown from "showdown";
 import dummyCharacter from "../images/dummy-character.png";
+
+const markDownConverter = new showdown.Converter();
+// converter.makeHtml(text);
+
+if (document.querySelector(".markdown-textarea")) {
+    let markdownTextarea = new SimpleMDE({
+        element: document.querySelector(".markdown-textarea"),
+    });
+}
 
 let charactersContainer = document.querySelector(".characters-container .row");
 const API_URI = "https://character-database.becode.xyz/characters";
@@ -260,7 +271,9 @@ if (singleCharacterContainer) {
     </div>
     <div class="description character-full-description">
       <p>${
-          hero.description ? hero.description : "No Full description provided"
+          hero.description
+              ? markDownConverter.makeHtml(hero.description)
+              : "No Full description provided"
       }</p>
     </div>
     <div class="actions-buttons-container row">
