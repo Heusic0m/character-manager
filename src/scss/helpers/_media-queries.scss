@@ -1,10 +1,39 @@
 /*  LARGE SCREENS AND ABOVE  */
 @media screen and (min-width: $screen-sm-max) {
+
+    .masonry-row {padding-bottom: 2rem;
+        .character {
+            @include columns-generator(3, 3%);
+        }
+
+        @supports (column-count: auto) or (-moz-column-count: auto) or (-webkit-column-count: auto) {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;
+            -webkit-column-fill: auto;
+            -moz-column-fill: auto;
+            column-fill: auto;
+            -webkit-column-gap: 3%;
+            -moz-column-gap: 3%;
+            column-gap: 3%;
+            -webkit-column-break-after: always;
+
+            .character {
+                float: none !important;
+                width: auto !important;
+                margin: 0 !important;
+                margin-bottom: 2rem !important;
+                -webkit-column-break-inside: avoid;
+                -moz-column-break-inside: avoid;
+                page-break-inside: avoid;
+                break-inside: avoid-column;
+                backface-visibility: hidden;
+            }
+        }
+    }
+
     .characters-container {
         .character {
-
-            @include columns-generator(3, 3%);
-
             .actions-buttons-container {
                 .action-button {
                     @include columns-generator(3, 3%);
@@ -92,9 +121,36 @@
 
 /*  TABLETS ONLY  */
 @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
-    .characters-container {
+    .masonry-row {
+        padding-bottom: 2rem;
+
         .character {
             @include columns-generator(2, 3%);
+        }
+
+        @supports (column-count: auto) or (-moz-column-count: auto) or (-webkit-column-count: auto) {
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+            -webkit-column-fill: auto;
+            -moz-column-fill: auto;
+            column-fill: auto;
+            -webkit-column-gap: 3%;
+            -moz-column-gap: 3%;
+            column-gap: 3%;
+            -webkit-column-break-after: always;
+
+            .character {
+                float: none !important;
+                width: auto !important;
+                margin: 0 !important;
+                margin-bottom: 2rem !important;
+                -webkit-column-break-inside: avoid;
+                -moz-column-break-inside: avoid;
+                page-break-inside: avoid;
+                break-inside: avoid-column;
+                backface-visibility: hidden;
+            }
         }
     }
 }
