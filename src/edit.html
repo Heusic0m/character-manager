@@ -30,10 +30,11 @@
                 </header>
             </div>
             <div class="container">
+                <div id="editorSection"></div>
                 <p class="title">Edit character</p>
-                <form method="post" class="create-form row">
+                <form action="javascript:;" method="post" class="edit-form row">
                     <div class="character">
-                        <div class="character-image">
+                        <div id="characterImage" class="character-image">
                             <img src="./images/dummy-character.png" />
                         </div>
 
@@ -51,6 +52,7 @@
                     <div class="form-fields-container">
                         <div class="form-field-container">
                             <input
+                                id="editName"
                                 class="form-field create"
                                 type="text"
                                 name="pseudo"
@@ -59,6 +61,7 @@
                         </div>
                         <div class="form-field-container">
                             <input
+                                id="editShortDescription"
                                 class="form-field create"
                                 type="text"
                                 name="pseudo"
@@ -69,7 +72,7 @@
                             <textarea
                                 class="form-field create"
                                 name="Full desc"
-                                id=""
+                                id="editFullDescription"
                                 cols="30"
                                 rows="10"
                                 placeholder="Full description"
@@ -78,12 +81,13 @@
 
                         <div>
                             <input
-                                class="delete"
-                                type="submit"
+                                id="editDeleteButton"
+                                class="delete no-select"
                                 value="delete"
+                                type="button"
                             />
                             <input
-                                class="submit"
+                                class="submit no-select"
                                 type="submit"
                                 value="Submit"
                             />
@@ -92,7 +96,6 @@
                 </form>
             </div>
         </div>
-
         <script src="./ts/main.ts"></script>
     </body>
 </html>
