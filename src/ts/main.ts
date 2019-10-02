@@ -29,22 +29,22 @@ if (charactersContainer) {
 
     <div class="actions-buttons-container">
       <div class="view action-button no-select">
-        <a href="./view.html">View</a>
+        <button class="view-button" type="button">View</button>
       </div>
       <div class="edit action-button no-select">
-        <a href="./edit.html">Edit</a>
+        <button class="edit-button" type="button">Edit</button>
       </div>
       <div class="delete action-button no-select">
-        <button type="button">Delete</button>
+        <button class="delete-button" type="button">Delete</button>
       </div>
     </div>
   </div>
 `;
             let character = document.createElement("div");
             character.classList.add("character", "break-long-words");
+            character.setAttribute("data-id", hero.id);
             character.innerHTML = characterCode;
             charactersContainer.appendChild(character);
-            console.log(hero);
 
             setInterval(() => {
                 if (res.data.length <= 0) {
@@ -66,6 +66,41 @@ if (charactersContainer) {
     });
 }
 
+document.addEventListener("click", function(e) {
+    if (e.target && e.target.classList.contains("view-button")) {
+        let parentElement = e.target.closest(".character");
+        let parentID = parentElement.getAttribute("data-id");
+        window.location.href = `${window.location.origin}/view.html?id=${parentID}`;
+    }
+
+    if (e.target && e.target.classList.contains("edit-button")) {
+        let parentElement = e.target.closest(".character");
+        let parentID = parentElement.getAttribute("data-id");
+        window.location.href = `${window.location.origin}/edit.html?id=${parentID}`;
+    }
+
+    if (e.target && e.target.classList.contains("delete-button")) {
+        let parentElement = e.target.closest(".character");
+        let parentID = parentElement.getAttribute("data-id");
+        let confirmDelete = confirm(
+            `Are you sure to delete ${
+                parentElement.querySelector(".character-name p").innerText
+            }?`,
+        );
+
+        if (confirmDelete) {
+            axios
+                .delete(
+                    `https://character-database.becode.xyz/characters/${parentID}`,
+                )
+                .then(res => {
+                    parentElement.parentNode.removeChild(parentElement);
+                    console.log(res);
+                });
+        }
+    }
+});
+
 File.prototype.convertToBase64 = function(callback) {
     var reader = new FileReader();
     reader.onloadend = function(e) {
@@ -83,9 +118,10 @@ let createImageToBase64: void;
 if (createForm) {
     if (characterImageCreateInput) {
         characterImageCreateInput.addEventListener("change", el => {
-            createImageToBase64 = convertToBase64(el.currentTarget);
+            console.log(createImageToBase64);
+
             document.querySelector(".create-form .character-image img").src =
-                "data:image/png;base64," + convertToBase64(el.currentTarget);
+                "data:image/png;base64," + createImageToBase64;
         });
     }
 
@@ -108,5 +144,63 @@ if (createForm) {
         createFormData.image = createImageToBase64;
 
         console.log(createFormData);
+    });
+}
+
+let singleCharacterContainer = document.querySelector(
+    ".single-character-container",
+);
+
+if (singleCharacterContainer) {
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let currentElementID = url.searchParams.get("id");
+
+    axios(
+        `https://character-database.becode.xyz/characters/${currentElementID}`,
+    ).then(res => {
+        let hero = res.data;
+
+        const characterCode = `
+<div class="sticky-character-image col-6 col-xs-18">
+  <div class="character-image">
+    <img src="data:image/png;base64,${
+        hero.image ? hero.image : dummyCharacterImage
+    }" />
+  </div>
+</div>
+<div class="col-12 col-xs-18">
+  <div class="character-infos">
+    <div class="character-name">
+      <p>${hero.name ? hero.name : "No name"}</p>
+    </div>
+    <div class="description character-short-description">
+      <p>${
+          hero.shortDescription
+              ? hero.shortDescription
+              : "No short description provided"
+      }</p>
+    </div>
+    <div class="description character-full-description">
+      <p>${
+          hero.description ? hero.description : "No Full description provided"
+      }</p>
+    </div>
+    <div class="actions-buttons-container">
+      <div class="edit action-button no-select">
+        <button class="edit-button" type="button">Edit</button>
+      </div>
+      <div class="delete action-button no-select">
+        <button class="delete-button" type="button">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+            `;
+        let character = document.createElement("div");
+        character.classList.add("character", "break-long-words", "row");
+        character.setAttribute("data-id", hero.id);
+        character.innerHTML = characterCode;
+        singleCharacterContainer.appendChild(character);
     });
 }
