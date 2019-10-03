@@ -269,7 +269,7 @@ if (singleCharacterContainer) {
               : "No short description provided"
       }</p>
     </div>
-    <div class="description character-full-description">
+    <div id="wrapper" class="description character-full-description break-long-words">
       <p>${
           hero.description
               ? markDownConverter.makeHtml(hero.description)
