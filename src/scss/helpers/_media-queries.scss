@@ -1,6 +1,5 @@
 /*  LARGE SCREENS AND ABOVE  */
 @media screen and (min-width: $screen-sm-max) {
-
     .masonry-row {
         padding-bottom: 2rem;
 
@@ -8,7 +7,8 @@
             @include columns-generator(3, 3%);
         }
 
-        @supports (column-count: auto) or (-moz-column-count: auto) or (-webkit-column-count: auto) {
+        @supports (column-count: auto) or (-moz-column-count: auto) or
+            (-webkit-column-count: auto) {
             -webkit-column-count: 3;
             -moz-column-count: 3;
             column-count: 3;
@@ -51,6 +51,10 @@
 
 /*  TABLETS AND ABOVE  */
 @media screen and (min-width: $screen-xs-max) {
+    .markdown-textarea-container {
+        width: 40vw !important;
+        max-width: 40vw !important;
+    }
 
     .header-container {
         .header {
@@ -58,7 +62,6 @@
                 margin-top: -2px;
 
                 .header-action-button {
-
                     span {
                         &::before {
                             position: relative;
@@ -110,11 +113,13 @@
 
     .create-form,
     .edit-form {
-
         .character,
         .form-fields-container {
             float: left;
         }
+    }
+    .character {
+        margin-bottom: 3rem;
     }
 }
 
@@ -136,7 +141,8 @@
             @include columns-generator(2, 3%);
         }
 
-        @supports (column-count: auto) or (-moz-column-count: auto) or (-webkit-column-count: auto) {
+        @supports (column-count: auto) or (-moz-column-count: auto) or
+            (-webkit-column-count: auto) {
             -webkit-column-count: 2;
             -moz-column-count: 2;
             column-count: 2;
@@ -178,9 +184,15 @@
                     font-size: 2rem;
                     height: 4rem;
                     width: 4rem;
-                    -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-                    -moz-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-                    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+                    -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+                        0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+                        0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+                    -moz-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+                        0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+                        0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+                    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+                        0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+                        0px 1px 18px 0px rgba(0, 0, 0, 0.12);
 
                     span {
                         position: absolute;
