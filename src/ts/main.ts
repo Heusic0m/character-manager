@@ -262,12 +262,11 @@ if (singleCharacterContainer) {
     <div class="character-name">
       <p>${hero.name ? hero.name : "No name"}</p>
     </div>
-    <div class="description character-short-description">
-      <p>${
-          hero.shortDescription
-              ? hero.shortDescription
-              : "No short description provided"
-      }</p>
+    <div class="description character-short-description">${
+        hero.shortDescription
+            ? hero.shortDescription
+            : "No short description provided"
+    }
     </div>
     <div id="wrapper" class="description character-full-description break-long-words">
       <p>${
