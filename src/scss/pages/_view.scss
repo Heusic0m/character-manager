@@ -86,25 +86,29 @@
 
             .action-button {
                 &.delete {
-
                     a,
                     button {
                         background-color: $delete-button-background-color;
 
                         &:hover {
-                            background-color: darken($delete-button-background-color, 25);
+                            background-color: darken(
+                                $delete-button-background-color,
+                                25
+                            );
                         }
                     }
                 }
 
                 &.view {
-
                     a,
                     button {
                         background-color: $view-button-background-color;
 
                         &:hover {
-                            background-color: darken($view-button-background-color, 10);
+                            background-color: darken(
+                                $view-button-background-color,
+                                10
+                            );
                         }
                     }
                 }
@@ -114,5 +118,11 @@
                 }
             }
         }
+    }
+}
+
+.character-full-description {
+    * {
+        max-width: 100% !important;
     }
 }
